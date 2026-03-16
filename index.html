@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENA HAYAKAWA | Portfolio</title>
+    <meta name="description" content="Webデザイナーを目指す早川聖奈のポートフォリオサイトです。Webデザインやグラフィックデザインなどの制作実績をまとめています。">
+    <link rel="icon" href="">
+    <link rel="apple-touch-icon" href="">
+    <!-- Adobeフォント読み込み -->
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'lxs2yee',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    <noscript>
+        <link rel="stylesheet" href="https://use.typekit.net/lxs2yee.css">
+    </noscript>
+    <!-- css読み込み -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mainvisual">
+        <header id="header">
+            <h1 class="logo">
+                <a href="index.html">S<span class="anim-e">E</span>NA <br class="sp-br">HAYAKAWA</a>
+            </h1>
+            <div class="hamburger">
+                <!-- ハンバーガーメニュー用 -->
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="navi">
+                <ul class="menu">
+                    <li><a href="#works">WORKS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="#contact" class="btn"><span>CONTACT</span></a></li>
+                </ul>
+            </nav>
+        </header>
+        <ul class="slideshow" id="js-slideshow">
+            <li><img src="img/midpoint-modern-01.webp" alt="" width="1600" height="1334" fetchpriority="high"
+                    decoding="async"></li>
+        </ul>
+        <div class="catchphrase">
+            <h2>
+                D<span class="anim-e">E</span>SIGNING TH<span class="anim-e">E</span> VOID<br>
+                R<span class="anim-e">E</span>TURNING <span class="anim-e">E</span>V<span class="anim-e">E</span>RY
+                <span class="anim-e">E</span>L<span class="anim-e">E</span>M<span class="anim-e">E</span>NT<br>
+                TO ITS RIGHTFUL PLAC<span class="anim-e">E</span>
+            </h2>
+            <p>あるべき余白へ、還すデザイン。</p>
+        </div>
+    </div>
+
+    <main>
+
+        <section id="works" class="wrapper">
+            <h2 class="section-title fade-in">WORKS</h2>
+            <div class="portfolio fade-in">
+                <div class="img">
+                    <img src="img/portfolio-mockup.webp" alt="ポートフォリオサイト モックアップ画面" width="2880" height="2000"
+                        loading="lazy" decoding="async">
+                </div>
+                <div class="text-side">
+                    <h3 class="cat-title">ポートフォリオ</h3>
+                    <p class="cat-detail">WEBサイト | 自主制作</p>
+                    <p class="text">
+                        Webデザイナー／グラフィックデザイナーを目指す、私のポートフォリオサイトです。Webサイト制作から、名刺やバナーなどのグラフィックデザインまで、これまでの制作実績をまとめています。
+                    </p>
+                    <a href="works/portfolio.html" class="btn"><span>VIEW MORE</span></a>
+                </div>
+            </div>
+
+            <div class="banner">
+                <!-- <h3 class="cat-title">その他</h3> -->
+                <div class="banner-list">
+                    <div class="banner-item fade-in">
+                        <a href="works/midpoint-modern.html">
+                            <div class="img">
+                                <img src="img/midpoint-modern-01.webp" alt="" width="1600" height="1334" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">Midpoint Modern</p>
+                            <p class="cat-detail">広告バナー | 学校課題</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/noir-edge.html">
+                            <div class="img">
+                                <img src="img/noir-edge-01.webp" alt="" width="1600" height="1334" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">NOIR EDGE</p>
+                            <p class="cat-detail">広告バナー | 学校課題</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/cycle-house-shinbi.html">
+                            <div class="img">
+                                <img src="img/cycle-house-shinbi-01.webp" alt="" width="1600" height="1334"
+                                    loading="lazy" decoding="async">
+                            </div>
+                            <p class="banner-title">サイクルハウスシンビ</p>
+                            <p class="cat-detail">広告バナー | 学校課題</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/sttoke.html">
+                            <div class="img">
+                                <img src="img/sttoke.webp" alt="" width="1600" height="2000" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">STTOKE</p>
+                            <p class="cat-detail">Instagram広告 | 学校課題</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/mellow.html">
+                            <div class="img">
+                                <img src="img/mellow.webp" alt="" width="1600" height="2000" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">mellow</p>
+                            <p class="cat-detail">Instagram広告 | 学校課題</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/sora.html">
+                            <div class="img">
+                                <img src="img/sora_mockup.webp" alt="" width="1200" height="1104" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">SORA</p>
+                            <p class="cat-detail">名刺 | 学校課題</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/lumiere.html">
+                            <div class="img">
+                                <img src="img/lumiere.webp" alt="" width="1600" height="2000" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">Lumiere</p>
+                            <p class="cat-detail">Instagram広告 | 自主制作</p>
+                        </a>
+                    </div>
+                    <div class="banner-item fade-in">
+                        <a href="works/archive.html">
+                            <div class="img">
+                                <img src="img/study-mockup.webp" alt="" width="2880" height="2000" loading="lazy"
+                                    decoding="async">
+                            </div>
+                            <p class="banner-title">Archive</p>
+                            <p class="cat-detail">webサイト | 学習記録</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <section class="about wrapper">
+            <h2 class="section-title fade-in">ABOUT</h2>
+            <div class="profile-wrap fade-in">
+                <div class="img-side">
+                    <div class="img">
+                        <img src="img/profile_2.jpg" alt="早川聖奈" width="960" height="1200" loading="lazy"
+                            decoding="async">
+                    </div>
+                    <p class="name-en">SENA HAYAKAWA</p>
+                    <p class="name-ja">早川 聖奈</p>
+                </div>
+                <div class="text-side">
+                    <p class="text">
+                        大学で建築を学んだあと、建築意匠設計や、花を通して特別な「シーン」を演出するフローリストとしてのキャリアを経て、Webデザインの世界へ。
+                        2025年11月より職業訓練校にてデザインとコーディングを学んでいます。<br>
+                        現在、デザイン業界を視野に就職活動中。
+                    </p>
+                    <a href="about.html" class="btn"><span>READ MORE</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="contact-title">CONTACT</h2>
+            <p class="text">お問い合わせは、<br class="sp-br">下記のメールアドレスまでお願いいたします。</p>
+            <a href="mailto:hayakawa.sena521@gmail.com" class="btn"><span>hayakawa.sena521@gmail.com</span></a>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <p class="text">
+            Illustrator / Photoshop / Figma<br>
+            HTML / CSS / JavaScript / PHP / WordPress
+        </p>
+        <small class="copyright">&copy; 2026 SENA HAYAKAWA Portfolio</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
