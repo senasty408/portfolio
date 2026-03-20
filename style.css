@@ -45,14 +45,29 @@ a:hover {
 }
 
 .section-title {
-    font-size: 64px;
-    font-weight: 100;
-    margin-bottom: 80px;
-    position: relative;
+    font-size: 240px;
+    font-weight: 600;
+    color: #f2f2f2;
+    position: sticky;
+    top: 35vh;
+    /* 変更: もっと下（画面の中央より少し上くらい）に配置する！ */
+    z-index: -1;
     display: inline-block;
+    margin-left: -92px;
+    margin-bottom: 80px;
+    /* 縦幅の魔法を使わず、正攻法で高さを戻す */
 }
 
-.section-title::before {
+.section-title-default {
+    font-size: 240px;
+    font-weight: 600;
+    color: #f2f2f2;
+    margin-left: -92px;
+    margin-bottom: 80px;
+
+}
+
+/* .section-title::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -61,7 +76,7 @@ a:hover {
     height: 1px;
     background-color: #333;
     margin-right: 20px;
-}
+} */
 
 
 .btn {
@@ -133,188 +148,6 @@ a:hover {
     transform: none;
 }
 
-/* -------------------- TOPページ -------------------- */
-
-/* --------------------
-header
--------------------- */
-.mainvisual {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    margin-bottom: 200px;
-}
-
-.catchphrase {
-    position: absolute;
-    width: 50%;
-    top: 50%;
-    left: 0%;
-    padding-left: 10%;
-    padding-right: 2%;
-    transform: translateY(-50%);
-    z-index: 5;
-}
-
-.catchphrase h2 {
-    font-size: 48px;
-    font-weight: 200;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.anim-e {
-    display: inline-block;
-    /* 8秒かけて1回だけ再生し、最後の状態（100%）を保持する */
-    animation: revealE 8s ease-in-out forwards;
-}
-
-@keyframes revealE {
-    0% {
-        clip-path: inset(0 100% 0 0);
-        color: #333;
-    }
-
-    40% {
-        clip-path: inset(0 0 0 0);
-        color: #333;
-    }
-
-    46% {
-        clip-path: inset(0 0 0 0);
-        color: #999;
-    }
-
-    100% {
-        clip-path: inset(0 0 0 0);
-        color: #999;
-    }
-}
-
-.slideshow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    z-index: -1;
-    background-color: #f9f9f9;
-}
-
-.slideshow li {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    /* 初期状態は透明（1枚目以外） */
-    animation: fadeAnime 20s infinite;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.slideshow li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
-    z-index: -1;
-    /* 手前のimgタグより後ろに配置する */
-    backdrop-filter: blur(3px);
-}
-
-.slideshow li img {
-    max-width: 80%;
-    max-height: 80vh;
-    object-fit: contain;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.slideshow li:nth-child(1) {
-    opacity: 1;
-    /* 1枚目は初期状態から表示 */
-    animation: fadeAnimeFirst 20s infinite;
-    animation-delay: 0s;
-}
-
-.slideshow li:nth-child(2) {
-    /* background-image: url('img/sttoke.webp'); */
-    /* 2枚目の画像パス */
-    animation-delay: 5s;
-    /* 5秒遅れてスタート */
-}
-
-.slideshow li:nth-child(3) {
-    /* background-image: url('img/mellow.webp'); */
-    /* 3枚目の画像パス */
-    animation-delay: 10s;
-    /* 10秒遅れてスタート */
-}
-
-.slideshow li:nth-child(4) {
-    /* background-image: url('img/noir-edge-01.webp'); */
-    /* 4枚目の画像パス */
-    animation-delay: 15s;
-    /* 15秒遅れてスタート */
-}
-
-/* フェードイン・フェードアウトの動きの定義 */
-@keyframes fadeAnime {
-    0% {
-        opacity: 0;
-    }
-
-    /* 最初は透明 */
-    10% {
-        opacity: 1;
-    }
-
-    /* 2秒かけてフェードイン (20秒の10%) */
-    25% {
-        opacity: 1;
-    }
-
-    /* 3秒間そのまま表示 (20秒の25%まで) */
-    35% {
-        opacity: 0;
-    }
-
-    /* 2秒かけてフェードアウト (20秒の35%) */
-    100% {
-        opacity: 0;
-    }
-
-    /* 残りの時間は透明のまま待機 */
-}
-
-/* 1枚目専用のアニメーション（最初は表示されていて、後から消える） */
-@keyframes fadeAnimeFirst {
-    0% {
-        opacity: 1;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    35% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
 #header {
     width: 100%;
     height: 80px;
@@ -325,10 +158,11 @@ header
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 100;
+    /* 変更: main に z-index:10 を付けたため、ヘッダーが負けないように最も高くします！ */
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
-    /* すりガラス効果 */
+    border-bottom: 1px #333 solid;
 }
 
 #header .logo a {
@@ -390,14 +224,203 @@ header
     display: none;
 }
 
+/* -------------------- TOPページ -------------------- */
+.mainvisual {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 80px;
+}
 
 
+.catchphrase {
+    width: 100%;
+    padding: 0 5%;
+    text-align: center;
+    /* 文字を中央揃えに */
+    order: 1;
+    /* 画像の上に配置 */
+    margin-top: 140px;
+    margin-bottom: 140px;
+    /* 固定マスク（z-index: 5）の上に覆い被さるようにする！ */
+    position: relative;
+    z-index: 10;
+}
+
+.catchphrase h2 {
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.anim-e {
+    display: inline-block;
+    /* 8秒かけて1回だけ再生し、最後の状態（100%）を保持する */
+    animation: revealE 8s ease-in-out forwards;
+}
+
+@keyframes revealE {
+    0% {
+        clip-path: inset(0 100% 0 0);
+        color: #333;
+    }
+
+    40% {
+        clip-path: inset(0 0 0 0);
+        color: #333;
+    }
+
+    46% {
+        clip-path: inset(0 0 0 0);
+        color: #999;
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        color: #999;
+    }
+}
+
+.slideshow {
+    position: relative;
+    width: 90%;
+    /* 変更: スクロールで画像を重ねるため、親の固定の高さを削除し、中身に合わせて伸びるようにします */
+    order: 2;
+    padding-bottom: 100vh;
+    /* 最後の4枚目が止まったあと、そのまま留まらせるための「延長レール」を追加！ */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 帯だった ::before は、裏の画像を隠すために各 li に背景色を戻したため削除しました😊 */
+/* → 再び「帯の固定」と「画像のすり抜け」を両立させるため復活させます！ */
+.slideshow::before {
+    content: '';
+    order: 0;
+    position: sticky;
+    top: 10vh;
+    display: block;
+    width: 100%;
+    height: 80vh;
+    background-color: #e5e5e5;
+    z-index: -1;
+    /* margin-bottom: -80vh; は下の li:first-child に移動させてバグを修正！ */
+}
+
+/* 真・究極の魔法マスク：スライドショーの画像が画面下端から直接現れるのを隠す、透明な窓と巨大な影！ */
+.slideshow::after {
+    content: '';
+    order: -1;
+    /* 強制的に物理レイアウトの一番最初に配置し、影の無効化（ブラウザの描画サボり）を完璧に防ぐ魔法！ */
+    position: sticky;
+    top: 10vh;
+    /* グレー帯と全く同じ位置に張り付く */
+    display: block;
+    width: 100%;
+    height: 80vh;
+    /* グレー帯と同じ高さの透明な窓 */
+    background-color: transparent;
+    z-index: 5;
+    /* 画像(0)より上で、他のメインコンテンツ(10)などより下に潜る */
+    /* この透明な窓の「真下」にだけ、ハッキリとしたサイト背景色の「影」を落とす！ */
+    /* これにより、グレー帯より下の領域（90vh以降）だけが完全に白く塗りつぶされる！ */
+    box-shadow: 0 80vh 0 0 #fff, 0 160vh 0 0 #fff;
+    pointer-events: none;
+    margin-bottom: -80vh;
+    /* 高さ（80vh）を消して、レイアウトが間延びするのを防ぐ！ */
+}
+
+/* 帯（::before）の高さ分だけ、1枚目の画像を上に引き上げる魔法の記述 */
+.slideshow li:first-child {
+    margin-top: -80vh;
+}
+
+.slideshow li {
+    /* 変更: 絶対配置をやめ、スクロールに合わせて画面に追従して重なる魔法のプロパティ「sticky」に変更！ */
+    position: sticky;
+    top: 10vh;
+    /* 画面の上から10vhの位置でピタッと止まるように設定 */
+    height: 80vh;
+    /* 以前の帯の高さを、個々の要素（li）に持たせます */
+    width: 100%;
+    /* 背景色は帯専用（::before）に引き継ぎ、li自体は透明にします！ */
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slideshow li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    z-index: -1;
+    /* 手前のimgタグより後ろに配置する */
+}
+
+.slideshow li img {
+    max-width: 80%;
+    max-height: 100%;
+    /* 親要素（50vh）を超えないように100%に変更 */
+    object-fit: contain;
+    /* 外枠だけのbox-shadowをやめ、画像の形そのものに影をつけるフィルター */
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+    /* 画像の境界線がわかりやすいように、少し濃いめのドロップシャドウにしています */
+
+    /* 追加: 次の画像が来た時にフワッと消えるアニメーション */
+    transition: opacity 0.5s ease;
+}
+
+/* JSによって付与される、前の画像を隠すクラス */
+.slideshow li img.hide-prev {
+    opacity: 0;
+}
+
+
+
+
+
+/* --------------------
+メインコンテンツ全体（上に被さる処理）
+-------------------- */
+main {
+    position: relative;
+    z-index: 10;
+    /* スライドショーの上に被さるように、z-index を高く（手前に）設定 */
+    background-color: #fff;
+    /* 白い背景を強制的に持たせて、下に残ったグレーの帯や画像を完全に隠しながらスライドする */
+    margin-top: -100vh;
+    /* 上で追加した100vhの延長レール分を相殺して、上に覆い被さるように魔法をかける！ */
+    padding-top: 200px;
+    /* 元々 .mainvisual にあった「次のコンテンツとの余白（200px）」をここで再現 */
+}
 
 /* --------------------
 WORKS
 -------------------- */
 #works {
-    margin-bottom: 200px;
+    /* 相殺マージンを削除し、純粋なブロック高さだけで物理制御する！ */
+    position: relative;
+}
+
+/* 真の延長レール（見た目の完璧な余白と同じ200pxにする！） */
+#works::after {
+    content: '';
+    display: block;
+    height: 200px;
+    pointer-events: none;
 }
 
 /* タイトル（共通） */
@@ -408,6 +431,10 @@ WORKS
 
 /* ポートフォリオ部分 */
 #works .portfolio {
+    /* 文字の高さを戻したため、margin-topの相殺を削除 */
+    position: relative;
+    z-index: 1;
+    /* 魔法の白霧よりも手前（上）に配置して、コンテンツが隠れないようにする */
     display: flex;
     gap: 100px;
     margin-bottom: 200px;
@@ -426,6 +453,12 @@ WORKS
 }
 
 /* バナー作品部分 */
+.banner {
+    position: relative;
+    z-index: 1;
+    /* 白い霧の手前（上）に配置する */
+}
+
 .banner .cat-title {
     margin-bottom: 40px;
     text-align: center;
@@ -434,7 +467,7 @@ WORKS
 .banner-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 80px 5px;
+    gap: 100px 20px;
 }
 
 .banner .banner-list .banner-item {
@@ -449,7 +482,14 @@ WORKS
 }
 
 .banner .banner-list .banner-item .img {
-    background-color: #f2f2f2;
+    /* ▼ 背景そのものは透明にして、ぼかし効果だけを残す ▼ */
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    /* 背景をぼかす */
+    -webkit-backdrop-filter: blur(8px);
+    /* Safari対応 */
+
+    border-bottom: 1px solid #333;
     /* padding-topハックで絶対的な1:1を作る（Safariのバグ回避） */
     width: 100%;
     padding-top: 100%;
@@ -469,6 +509,19 @@ WORKS
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    /* ふわっと感のある動き */
+}
+
+/* ホバー時のアニメーション設定 */
+.banner .banner-list .banner-item a:hover {
+    opacity: 1;
+    /* 全体が薄くなる初期設定を打ち消す */
+}
+
+.banner .banner-list .banner-item a:hover .img img {
+    transform: scale(1.08);
+    /* 画像だけを少し拡大 */
 }
 
 .banner .banner-list .banner-item .banner-title {
@@ -523,10 +576,23 @@ WORKS
 ABOUT
 -------------------- */
 .about {
-    margin-bottom: 200px;
+    /* 相殺マージンを削除し、純粋なブロック高さだけで物理制御する！ */
+    position: relative;
+}
+
+/* 真の延長レール（見た目の完璧な余白と同じ200pxにする！） */
+.about::after {
+    content: '';
+    display: block;
+    height: 200px;
+    pointer-events: none;
 }
 
 .about .profile-wrap {
+    /* 前の相殺分を削除 */
+    position: relative;
+    z-index: 1;
+    /* 魔法の白霧の手前（上）に配置する */
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -569,6 +635,9 @@ ABOUT
     gap: 60px;
     margin-bottom: 200px;
     /* タイトルとの間隔 */
+    position: relative;
+    z-index: 10;
+    /* 魔法の白い霧（z-index: 0）の上に配置して、飲み込まれないようにする！ */
 }
 
 .dots span {
@@ -589,6 +658,10 @@ contact
     background-color: #000;
     text-align: center;
     padding: 60px 0;
+    margin-top: 200px;
+    /* 固定マスク（z-index: 5）の上に覆い被さるようにする！ */
+    position: relative;
+    z-index: 10;
 }
 
 #contact .contact-title {
@@ -656,6 +729,9 @@ footer
 -------------------- */
 #footer {
     text-align: center;
+    /* 固定マスク（z-index: 5）の上に覆い被さるようにする！ */
+    position: relative;
+    z-index: 10;
     padding: 48px 0;
 }
 
@@ -685,7 +761,7 @@ header
     left: 0;
     width: 100%;
     background-color: #fff;
-    z-index: 10;
+    z-index: 100;
 }
 
 /* ヘッダーの高さ分、コンテンツを下げる */
@@ -824,6 +900,51 @@ skill
     padding: 0;
 }
 
+/* スキルリストの順次フェードイン（カスケード）設定 */
+.skill-design .fade-in:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.skill-design .fade-in:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.skill-design .fade-in:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.skill-design .fade-in:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.skill-coding .fade-in:nth-child(1) {
+    transition-delay: 0.5s;
+}
+
+.skill-coding .fade-in:nth-child(2) {
+    transition-delay: 0.6s;
+}
+
+.skill-coding .fade-in:nth-child(3) {
+    transition-delay: 0.7s;
+}
+
+.skill-coding .fade-in:nth-child(4) {
+    transition-delay: 0.8s;
+}
+
+/* PHP group */
+.skill-coding .fade-in:nth-child(5) {
+    transition-delay: 0.9s;
+}
+
+/* WordPress group */
+.skill-coding .fade-in:nth-child(6) {
+    transition-delay: 1.0s;
+}
+
+/* Editor */
+
 
 
 /* --------------------
@@ -869,6 +990,12 @@ strength
 
 
 /* -------------------- WORKSページ -------------------- */
+
+#works-page main {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 /* --------------------
 mainvisual
 -------------------- */
@@ -1137,7 +1264,8 @@ Smartphone
         width: 90%;
         padding: 0;
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 80px;
+        /* 修正: キャッチコピー下の余白を広げて被りを防ぐ */
         order: 1;
         /* HTMLの記述順に関わらず、キャッチフレーズを「上」にする */
         z-index: 5;
@@ -1156,25 +1284,63 @@ Smartphone
         position: relative;
         /* PC版の absolute（絶対配置）を解除 */
         width: 100%;
-        height: 45vh;
+        /* height: 45vh; を削除し、PC版の padding-bottom: 100vh (延長レール) を活かしてスクロールできるようにする */
+        height: auto;
         top: 0;
         bottom: 0;
         order: 2;
         /* スライドショーを「下」にする */
     }
 
-    html,
+    /* スマホ画面に合わせてスライドショーの枠の高さと位置を調整（魔法の数値を一括上書き） */
+    .slideshow::before {
+        top: 15vh;
+        height: 60vh;
+    }
+
+    .slideshow::after {
+        top: 15vh;
+        height: 60vh;
+        margin-bottom: -60vh;
+        box-shadow: 0 60vh 0 0 #fff, 0 120vh 0 0 #fff;
+    }
+
+    .slideshow li:first-child {
+        margin-top: -60vh;
+    }
+
+    .slideshow li {
+        top: 15vh;
+        height: 60vh;
+        padding: 20px 0;
+        /* 修正: PC版の40pxから縮めてスマホ画面を広く使う */
+    }
+
+    /* 追加: スマホ画面で画像がはみ出たりズレたりするのを防ぐ */
+    .slideshow li img {
+        max-width: 95%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+        /* 中央揃えの補助 */
+    }
+
+    /* html,
     body {
         overflow-x: hidden;
         width: 100%;
-    }
+    } */
 
-    .section-title {
+    .section-title,
+    .section-title-default {
         font-size: 48px;
         text-align: right;
         display: table;
         margin-left: auto;
         margin-right: 0;
+        top: 15vh;
     }
 
 
@@ -1302,7 +1468,7 @@ Smartphone
     /* banner */
     .banner-list {
         grid-template-columns: 1fr 1fr;
-        gap: 1px 1px;
+        gap: 100px 10px;
     }
 
 
@@ -1324,6 +1490,10 @@ Smartphone
     .banner .banner-list .cat-detail {
         display: none;
     }
+
+    /* .banner .banner-list .banner-item:nth-last-child(-n+2) .img {
+        border-bottom: none;
+    } */
 
 
 
@@ -1363,6 +1533,12 @@ Smartphone
 
 
     /* -------------------- ABOUTページ -------------------- */
+    #about main {
+        margin-top: 80px;
+        padding-top: 0;
+        /* 200pxだった余白をスマホ用に小さくする */
+    }
+
     /* --------------------
     header
     -------------------- */

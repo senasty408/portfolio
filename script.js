@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const images = [
             { src: 'img/sttoke.webp', width: 1600, height: 2000 },
             { src: 'img/mellow.webp', width: 1600, height: 2000 },
-            { src: 'img/noir-edge-01.webp', width: 1600, height: 1334 }
+            { src: 'img/sora_mockup.webp', width: 1600, height: 1334 }
         ];
 
         // ページ読み込み完了後に実行することで、初期表示（LCP）への影響を防ぐ
@@ -80,4 +80,47 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+});
+
+
+// ---------- 追加: スライドショーの画像切り替え（重なる時に前の画像を消す） ----------
+document.addEventListener('DOMContentLoaded', () => {
+    const slideshow = document.getElementById('js-slideshow');
+    if (!slideshow) return;
+
+    // スクロール時に各カード（li）がストップ位置（上から10vh付近）に来たかを監視
+    const slideObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentLi = entry.target;
+                const allLis = Array.from(slideshow.querySelectorAll('li'));
+                const currentIndex = allLis.indexOf(currentLi);
+
+                allLis.forEach((li, index) => {
+                    const img = li.querySelector('img');
+                    if (img) {
+                        if (index < currentIndex) {
+                            // 過去（上にある）画像はフワッと消す
+                            img.classList.add('hide-prev');
+                        } else {
+                            // 現在およびこれからの画像は表示しておく
+                            img.classList.remove('hide-prev');
+                        }
+                    }
+                });
+            }
+        });
+    }, {
+        // 画面の上から15%〜50%付近（ストップ位置の少し下）を通過したかを判定
+        rootMargin: "-15% 0px -70% 0px"
+    });
+
+    // 動的にJSで追加されるliもすべて監視対象にするため、MutationObserverを使用
+    const mutationObserver = new MutationObserver(() => {
+        slideshow.querySelectorAll('li').forEach(li => slideObserver.observe(li));
+    });
+
+    // 最初からあるliを監視＆追加を監視
+    slideshow.querySelectorAll('li').forEach(li => slideObserver.observe(li));
+    mutationObserver.observe(slideshow, { childList: true });
 });
