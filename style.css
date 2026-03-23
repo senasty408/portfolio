@@ -50,12 +50,10 @@ a:hover {
     color: #f2f2f2;
     position: sticky;
     top: 35vh;
-    /* 変更: もっと下（画面の中央より少し上くらい）に配置する！ */
     z-index: -1;
     display: inline-block;
     margin-left: -92px;
     margin-bottom: 80px;
-    /* 縦幅の魔法を使わず、正攻法で高さを戻す */
 }
 
 .section-title-default {
@@ -81,20 +79,15 @@ a:hover {
 
 .btn {
     display: inline-flex;
-    /* flexにして中の文字を中央揃えにすることでサイズが変わっても枠が維持されやすい */
     justify-content: center;
     align-items: center;
     font-size: 14px;
     font-weight: 300;
     border: 1px solid #333;
     min-width: 160px;
-    /* 文字が少ない場合は最低160pxを確保しつつ、メールアドレスなど長い場合は枠を伸ばす */
     padding: 0 20px;
-    /* 枠が伸びた時の左右の余白を確保 */
     height: 44px;
-    /* 少し高さを出します */
     transition: all 0.3s ease;
-    /* 全てのアニメーションを滑らかに */
     vertical-align: middle;
     /* ホバー時に隣とベースラインがズレてガタつくのを防ぐ */
     box-sizing: border-box;
@@ -120,21 +113,18 @@ a:hover {
 .text-link {
     text-decoration: underline;
     text-underline-offset: 4px;
-    /* 下線と文字の間に適度な余白を開ける */
     transition: all 0.3s;
 }
 
 .text-link:hover {
     color: #666;
     text-decoration-color: transparent;
-    /* ホバーで下線がフワッと消えるように */
 }
 
 /* ---------- フェードインアニメーション用 ---------- */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    /* 基本は下から上がる */
     transition: all 1s;
 }
 
@@ -159,7 +149,6 @@ a:hover {
     top: 0;
     left: 0;
     z-index: 100;
-    /* 変更: main に z-index:10 を付けたため、ヘッダーが負けないように最も高くします！ */
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
     border-bottom: 1px #333 solid;
@@ -184,14 +173,12 @@ a:hover {
     color: #333;
     font-weight: 500;
     position: relative;
-    /* 擬似要素（○）の基準位置にする */
     display: inline-block;
     vertical-align: middle;
 }
 
 #header .navi .menu li a.btn {
     display: inline-flex;
-    /* ここでインラインブロックを上書きし、中央揃えを効かせる */
 }
 
 /* ホバー時に上に現れる「◯」の設定 */
@@ -241,12 +228,10 @@ a:hover {
     width: 100%;
     padding: 0 5%;
     text-align: center;
-    /* 文字を中央揃えに */
     order: 1;
     /* 画像の上に配置 */
     margin-top: 140px;
     margin-bottom: 140px;
-    /* 固定マスク（z-index: 5）の上に覆い被さるようにする！ */
     position: relative;
     z-index: 10;
 }
@@ -260,7 +245,6 @@ a:hover {
 
 .anim-e {
     display: inline-block;
-    /* 8秒かけて1回だけ再生し、最後の状態（100%）を保持する */
     animation: revealE 8s ease-in-out forwards;
 }
 
@@ -289,16 +273,12 @@ a:hover {
 .slideshow {
     position: relative;
     width: 90%;
-    /* 変更: スクロールで画像を重ねるため、親の固定の高さを削除し、中身に合わせて伸びるようにします */
     order: 2;
     padding-bottom: 100vh;
-    /* 最後の4枚目が止まったあと、そのまま留まらせるための「延長レール」を追加！ */
     display: flex;
     flex-direction: column;
 }
 
-/* 帯だった ::before は、裏の画像を隠すために各 li に背景色を戻したため削除しました😊 */
-/* → 再び「帯の固定」と「画像のすり抜け」を両立させるため復活させます！ */
 .slideshow::before {
     content: '';
     order: 0;
@@ -309,46 +289,33 @@ a:hover {
     height: 80vh;
     background-color: #e5e5e5;
     z-index: -1;
-    /* margin-bottom: -80vh; は下の li:first-child に移動させてバグを修正！ */
 }
 
-/* 真・究極の魔法マスク：スライドショーの画像が画面下端から直接現れるのを隠す、透明な窓と巨大な影！ */
 .slideshow::after {
     content: '';
     order: -1;
-    /* 強制的に物理レイアウトの一番最初に配置し、影の無効化（ブラウザの描画サボり）を完璧に防ぐ魔法！ */
     position: sticky;
     top: 10vh;
-    /* グレー帯と全く同じ位置に張り付く */
     display: block;
     width: 100%;
     height: 80vh;
     /* グレー帯と同じ高さの透明な窓 */
     background-color: transparent;
     z-index: 5;
-    /* 画像(0)より上で、他のメインコンテンツ(10)などより下に潜る */
-    /* この透明な窓の「真下」にだけ、ハッキリとしたサイト背景色の「影」を落とす！ */
-    /* これにより、グレー帯より下の領域（90vh以降）だけが完全に白く塗りつぶされる！ */
     box-shadow: 0 80vh 0 0 #fff, 0 160vh 0 0 #fff;
     pointer-events: none;
     margin-bottom: -80vh;
-    /* 高さ（80vh）を消して、レイアウトが間延びするのを防ぐ！ */
 }
 
-/* 帯（::before）の高さ分だけ、1枚目の画像を上に引き上げる魔法の記述 */
 .slideshow li:first-child {
     margin-top: -80vh;
 }
 
 .slideshow li {
-    /* 変更: 絶対配置をやめ、スクロールに合わせて画面に追従して重なる魔法のプロパティ「sticky」に変更！ */
     position: sticky;
     top: 10vh;
-    /* 画面の上から10vhの位置でピタッと止まるように設定 */
     height: 80vh;
-    /* 以前の帯の高さを、個々の要素（li）に持たせます */
     width: 100%;
-    /* 背景色は帯専用（::before）に引き継ぎ、li自体は透明にします！ */
     padding: 40px 0;
     display: flex;
     justify-content: center;
@@ -365,21 +332,14 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: rgba(255, 255, 255, 0.2); */
     z-index: -1;
-    /* 手前のimgタグより後ろに配置する */
 }
 
 .slideshow li img {
     max-width: 80%;
     max-height: 100%;
-    /* 親要素（50vh）を超えないように100%に変更 */
     object-fit: contain;
-    /* 外枠だけのbox-shadowをやめ、画像の形そのものに影をつけるフィルター */
     filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
-    /* 画像の境界線がわかりやすいように、少し濃いめのドロップシャドウにしています */
-
-    /* 追加: 次の画像が来た時にフワッと消えるアニメーション */
     transition: opacity 0.5s ease;
 }
 
@@ -398,24 +358,18 @@ a:hover {
 main {
     position: relative;
     z-index: 10;
-    /* スライドショーの上に被さるように、z-index を高く（手前に）設定 */
     background-color: #fff;
-    /* 白い背景を強制的に持たせて、下に残ったグレーの帯や画像を完全に隠しながらスライドする */
     margin-top: -100vh;
-    /* 上で追加した100vhの延長レール分を相殺して、上に覆い被さるように魔法をかける！ */
     padding-top: 200px;
-    /* 元々 .mainvisual にあった「次のコンテンツとの余白（200px）」をここで再現 */
 }
 
 /* --------------------
 WORKS
 -------------------- */
 #works {
-    /* 相殺マージンを削除し、純粋なブロック高さだけで物理制御する！ */
     position: relative;
 }
 
-/* 真の延長レール（見た目の完璧な余白と同じ200pxにする！） */
 #works::after {
     content: '';
     display: block;
@@ -431,10 +385,8 @@ WORKS
 
 /* ポートフォリオ部分 */
 #works .portfolio {
-    /* 文字の高さを戻したため、margin-topの相殺を削除 */
     position: relative;
     z-index: 1;
-    /* 魔法の白霧よりも手前（上）に配置して、コンテンツが隠れないようにする */
     display: flex;
     gap: 100px;
     margin-bottom: 200px;
@@ -456,7 +408,6 @@ WORKS
 .banner {
     position: relative;
     z-index: 1;
-    /* 白い霧の手前（上）に配置する */
 }
 
 .banner .cat-title {
@@ -471,7 +422,6 @@ WORKS
 }
 
 .banner .banner-list .banner-item {
-    /* flexやgridの子要素が、中身のサイズ以上に広がってしまうのを防ぐため */
     min-width: 0;
     min-height: 0;
 }
@@ -482,10 +432,8 @@ WORKS
 }
 
 .banner .banner-list .banner-item .img {
-    /* ▼ 背景そのものは透明にして、ぼかし効果だけを残す ▼ */
     background-color: transparent;
     backdrop-filter: blur(8px);
-    /* 背景をぼかす */
     -webkit-backdrop-filter: blur(8px);
     /* Safari対応 */
 
@@ -498,7 +446,6 @@ WORKS
 }
 
 .banner .banner-list .banner-item .img img {
-    /* 絶対配置で親要素のど真ん中に余白(padding相当)を空けて配置 */
     position: absolute;
     top: 60px;
     left: 60px;
@@ -510,18 +457,15 @@ WORKS
     max-height: 100%;
     object-fit: contain;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    /* ふわっと感のある動き */
 }
 
 /* ホバー時のアニメーション設定 */
 .banner .banner-list .banner-item a:hover {
     opacity: 1;
-    /* 全体が薄くなる初期設定を打ち消す */
 }
 
 .banner .banner-list .banner-item a:hover .img img {
     transform: scale(1.08);
-    /* 画像だけを少し拡大 */
 }
 
 .banner .banner-list .banner-item .banner-title {
@@ -576,11 +520,9 @@ WORKS
 ABOUT
 -------------------- */
 .about {
-    /* 相殺マージンを削除し、純粋なブロック高さだけで物理制御する！ */
     position: relative;
 }
 
-/* 真の延長レール（見た目の完璧な余白と同じ200pxにする！） */
 .about::after {
     content: '';
     display: block;
@@ -589,10 +531,8 @@ ABOUT
 }
 
 .about .profile-wrap {
-    /* 前の相殺分を削除 */
     position: relative;
     z-index: 1;
-    /* 魔法の白霧の手前（上）に配置する */
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -601,7 +541,6 @@ ABOUT
 /* 画像サイド */
 .about .profile-wrap .img-side {
     width: 35%;
-    /* 親要素の幅を割合で指定 */
     max-width: 320px;
     margin-right: 200px;
 }
@@ -637,7 +576,6 @@ ABOUT
     /* タイトルとの間隔 */
     position: relative;
     z-index: 10;
-    /* 魔法の白い霧（z-index: 0）の上に配置して、飲み込まれないようにする！ */
 }
 
 .dots span {
@@ -645,9 +583,7 @@ ABOUT
     width: 6px;
     height: 6px;
     background-color: #ddd;
-    /* 薄いグレー */
     border-radius: 50%;
-    /* 丸くする */
 }
 
 /* --------------------
@@ -659,7 +595,6 @@ contact
     text-align: center;
     padding: 60px 0;
     margin-top: 200px;
-    /* 固定マスク（z-index: 5）の上に覆い被さるようにする！ */
     position: relative;
     z-index: 10;
 }
@@ -684,9 +619,7 @@ contact
     color: #fff;
     border: 1px solid #fff;
     min-width: 280px;
-    /* メールアドレスが入る幅 */
     height: 52px;
-    /* 高さを固定して枠が縮むのを防ぐ */
     font-size: 14px;
     font-weight: 300;
     transition: all 0.3s ease;
@@ -694,7 +627,6 @@ contact
 
 #contact a:hover {
     font-size: 14px;
-    /* .btnのホバー縮小を打ち消し、枠のサイズ変動を防ぐ */
 }
 
 #contact a::before {
@@ -706,7 +638,6 @@ contact
     height: 1px;
     background-color: #fff;
     transition: all 0.3s ease;
-    /* 矢印には縮小が影響しないよう個別に指定 */
 }
 
 #contact a::after {
@@ -717,7 +648,6 @@ contact
     width: 16px;
     height: 16px;
     border-top: 1px solid #fff;
-    /* border-right: 1px solid #fff; */
     transform: translateY(-50%) rotate(30deg);
     transition: all 0.3s ease;
 }
@@ -729,7 +659,6 @@ footer
 -------------------- */
 #footer {
     text-align: center;
-    /* 固定マスク（z-index: 5）の上に覆い被さるようにする！ */
     position: relative;
     z-index: 10;
     padding: 48px 0;
@@ -833,9 +762,7 @@ profile
 #about .profile-wrap .text-side .text {
     font-size: 15px;
     margin-bottom: 20px;
-    /* 段落間の余白 */
     text-align: justify;
-    /* 均等配置 */
 }
 
 #about .profile-wrap .text-side .text:last-child {
@@ -980,7 +907,6 @@ strength
 #about .strength .strength-list .text {
     width: 70%;
     text-align: justify;
-    /* 均等配置 */
 }
 
 
@@ -1106,9 +1032,7 @@ mainvisual
 
 #works-page .work-detail .spec-label {
     width: 100px;
-    /* ラベルの幅固定 */
     flex-shrink: 0;
-    /* 縮まないように */
     font-weight: 600;
 }
 
@@ -1142,12 +1066,9 @@ subvisual
 
 #works-page .work-subvisual .subvisual-img-wrap img {
     width: auto;
-    /* 強制的に横長にされるのを解除 */
     height: auto;
     max-width: 100%;
-    /* 親の横幅は超えないようにする */
     max-height: 80vh;
-    /* ★縦長の画像が巨大化しないよう、画面高さの80%を上限にする */
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -1211,7 +1132,6 @@ Webサイト作品用スタイル (影なし・画像大)
 
 #works-page.page-web .subvisual-item img {
     width: 100%;
-    /* 画像の比率が崩れて横に伸びるのを防ぐため、高さ制限を解除 */
     height: auto;
     max-height: none;
 }
@@ -1219,7 +1139,6 @@ Webサイト作品用スタイル (影なし・画像大)
 #works-page.page-web .mainvisual .mainvisual-img-wrap img,
 #works-page.page-web .work-subvisual .subvisual-img-wrap img {
     background-color: transparent;
-    /* img自体の背景は透明に */
     box-shadow: none;
     filter: none;
 }
@@ -1248,10 +1167,7 @@ Smartphone
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        /* 横方向の左右中央に配置 */
         padding-top: 80px;
-        /* ヘッダーが被らないように上部に余白を設ける */
-        /* PC版の height: 100vh; はそのまま引き継がれる */
     }
 
     .catchphrase {
@@ -1265,9 +1181,7 @@ Smartphone
         padding: 0;
         text-align: center;
         margin-bottom: 80px;
-        /* 修正: キャッチコピー下の余白を広げて被りを防ぐ */
         order: 1;
-        /* HTMLの記述順に関わらず、キャッチフレーズを「上」にする */
         z-index: 5;
     }
 
@@ -1284,15 +1198,13 @@ Smartphone
         position: relative;
         /* PC版の absolute（絶対配置）を解除 */
         width: 100%;
-        /* height: 45vh; を削除し、PC版の padding-bottom: 100vh (延長レール) を活かしてスクロールできるようにする */
         height: auto;
         top: 0;
         bottom: 0;
         order: 2;
-        /* スライドショーを「下」にする */
     }
 
-    /* スマホ画面に合わせてスライドショーの枠の高さと位置を調整（魔法の数値を一括上書き） */
+    /* スマホ画面に合わせてスライドショーの枠の高さと位置を調整 */
     .slideshow::before {
         top: 15vh;
         height: 60vh;
@@ -1313,10 +1225,9 @@ Smartphone
         top: 15vh;
         height: 60vh;
         padding: 20px 0;
-        /* 修正: PC版の40pxから縮めてスマホ画面を広く使う */
     }
 
-    /* 追加: スマホ画面で画像がはみ出たりズレたりするのを防ぐ */
+    /* スマホ画面で画像がはみ出たりズレたりするのを防ぐ */
     .slideshow li img {
         max-width: 95%;
         max-height: 100%;
@@ -1324,7 +1235,6 @@ Smartphone
         height: 100%;
         object-fit: contain;
         margin: 0 auto;
-        /* 中央揃えの補助 */
     }
 
     /* html,
@@ -1383,7 +1293,6 @@ Smartphone
         width: 100%;
         height: 1px;
         background-color: #666;
-        /* 全ページ共通で基本はグレー表示 */
         transition: 0.3s;
     }
 
@@ -1414,7 +1323,6 @@ Smartphone
         width: 100vw;
         height: 100vh;
         background-color: rgba(100, 100, 100, 0.95);
-        /* 背景色（グレー系） */
         z-index: 9990;
         display: flex;
         justify-content: center;
@@ -1536,7 +1444,6 @@ Smartphone
     #about main {
         margin-top: 80px;
         padding-top: 0;
-        /* 200pxだった余白をスマホ用に小さくする */
     }
 
     /* --------------------
@@ -1545,7 +1452,6 @@ Smartphone
 
     .hamburger.active span {
         background-color: #fff !important;
-        /* メニュー展開時（×の時）はグレー設定を打ち消して強制的に白に変更 */
     }
 
     #about .profile-wrap {
@@ -1579,9 +1485,7 @@ Smartphone
     .skill-wrapper .skill-list .skill-coding {
         display: flex;
         flex-direction: column;
-        /* 縦並び */
         align-items: flex-end;
-        /* 右寄せ */
         gap: 10px;
     }
 
@@ -1599,7 +1503,6 @@ Smartphone
     .skill-wrapper .skill-list .skill-coding .skill-item-group {
         align-items: flex-end;
         margin-bottom: -5px;
-        /* 「※学習中」の下の余白を詰める */
     }
 
     /* --------------------
@@ -1629,13 +1532,11 @@ Smartphone
     #works-page .mainvisual {
         margin-bottom: 0;
         padding-top: 100px;
-        /* スマホ時の上下余白 */
         padding-bottom: 60px;
     }
 
     #works-page .mainvisual .mainvisual-img-wrap {
         width: 85%;
-        /* スマホ版では左右余白を狭めて画像を大きく */
     }
 
     #works-page .work-detail {
@@ -1681,7 +1582,6 @@ Smartphone
 
     #works-page .work-subvisual .subvisual-img-wrap {
         width: 85%;
-        /* スマホ時はメイン画像と同じく大きく見せる */
     }
 
 
