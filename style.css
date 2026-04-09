@@ -970,6 +970,11 @@ mainvisual
     max-width: 800px;
 }
 
+#works-page .mainvisual .mainvisual-img-wrap.img-full {
+    width: 80%;
+    max-width: 1000px;
+}
+
 #works-page .work-detail {
     display: flex;
     justify-content: space-between;
