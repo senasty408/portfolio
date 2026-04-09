@@ -392,6 +392,10 @@ WORKS
     margin-bottom: 200px;
 }
 
+#works .portfolio.reverse {
+    flex-direction: row-reverse;
+}
+
 
 
 #works .portfolio .text-side .cat-detail {
@@ -949,13 +953,15 @@ mainvisual
     margin: 0 auto;
 }
 
-#works-page .mainvisual .mainvisual-img-wrap img {
+#works-page .mainvisual .mainvisual-img-wrap img,
+#works-page .mainvisual .mainvisual-img-wrap video {
     width: 100%;
     height: auto;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-#works-page .mainvisual .mainvisual-img-wrap.no-shadow img {
+#works-page .mainvisual .mainvisual-img-wrap.no-shadow img,
+#works-page .mainvisual .mainvisual-img-wrap.no-shadow video {
     box-shadow: none;
 }
 
@@ -1143,6 +1149,23 @@ Webサイト作品用スタイル (影なし・画像大)
     filter: none;
 }
 
+/* PC用スクロール枠 */
+#works-page.page-web .scroll-img-box-pc {
+    width: 80%;
+    max-width: 1000px;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 80px 0;
+}
+
+/* SP用スクロール枠 */
+#works-page.page-web .scroll-img-box-sp {
+    width: 80%;
+    max-width: 375px;
+    max-height: 70vh;
+    overflow-y: auto;
+    margin: 80px 0;
+}
 
 /* --------------------
 Smartphone
@@ -1360,10 +1383,8 @@ Smartphone
     }
 
 
-    /* --------------------
-    WORKS
-    -------------------- */
-    #works .portfolio {
+    #works .portfolio,
+    #works .portfolio.reverse {
         flex-direction: column;
         gap: 100px;
         margin-bottom: 200px;
