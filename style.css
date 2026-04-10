@@ -226,49 +226,30 @@ a:hover {
 
 .catchphrase {
     width: 100%;
+    height: 100vh;
     padding: 0 5%;
-    text-align: center;
     order: 1;
-    /* 画像の上に配置 */
-    margin-top: 140px;
-    margin-bottom: 140px;
-    position: relative;
-    z-index: 10;
+    display: flex;
+    align-items: center;
 }
 
-.catchphrase h2 {
-    font-size: 64px;
-    font-weight: 400;
+.catchphrase .en {
+    margin-bottom: 32px;
+}
+
+.catchphrase .en h2 {
+    font-size: 48px;
+    font-weight: 100;
     line-height: 1.2;
-    margin-bottom: 20px;
 }
 
-.anim-e {
-    display: inline-block;
-    animation: revealE 8s ease-in-out forwards;
+.catchphrase .ja {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 64px;
 }
 
-@keyframes revealE {
-    0% {
-        clip-path: inset(0 100% 0 0);
-        color: #333;
-    }
 
-    40% {
-        clip-path: inset(0 0 0 0);
-        color: #333;
-    }
-
-    46% {
-        clip-path: inset(0 0 0 0);
-        color: #999;
-    }
-
-    100% {
-        clip-path: inset(0 0 0 0);
-        color: #999;
-    }
-}
 
 .slideshow {
     position: relative;
@@ -359,7 +340,6 @@ main {
     position: relative;
     z-index: 10;
     background-color: #fff;
-    margin-top: -100vh;
     padding-top: 200px;
 }
 
